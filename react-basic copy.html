@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Basics</title>
+</head>
+
+<body>
+  <div class="js-container"></div>
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    function ProductDetails({ item, price, discountPrice, imageSrc }) {
+      return (
+        <>
+          <p>{item}</p>
+          <img src={imageSrc} width="100" />
+
+          {discountPrice ? (
+            <>
+              <p>  Price: <del>{"$" + price}</del>  </p>
+              <p>Discount price: ${discountPrice}</p>
+            </>
+          ) : (
+            <p>Price: ${price}</p>
+          )}
+          <button>Add to Cart</button>
+        </>
+      );
+    }
+
+
+    // Step 2a–2c: Create App component and render LoginForm
+    function App() {
+      return (
+        <div>
+
+          <ProductDetails item="cotton socks" price="10.32" discountPrice="8.43" imageSrc="cotton-socks.png" />
+          <ProductDetails item="tennis ball" price="167.32" imageSrc="tennis-balls.png" />
+          <ProductDetails item="t-shirt" price="11.00" imageSrc="plain-t-shirt.png" />
+        </div>
+      );
+    }
+
+
+    const container = document.querySelector(".js-container");
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>
