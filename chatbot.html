@@ -3,6 +3,35 @@
 
 <head>
   <title>chatbot</title>
+  <style>
+    .send-button{
+      background-color:rgb(25,135,84);
+      color:white;
+      padding: 12px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;           
+    }
+    .chat-input{
+      padding: 12px 15px;
+      border-radius: 10px;
+      border-width: 1px;
+      font-size: 15px;
+      flex-grow: 1;
+    }
+    .chat-input-container{
+      display:flex;
+
+    }
+    .app-container{
+      max-width: 600px;
+      /* margin-left: auto;
+      margin-right: auto; */
+  
+    }
+  </style>
 </head>
 
 <body>
@@ -45,21 +74,22 @@
 
       }
       return (
-        <>
+        <div className="chat-input-container">
           <input
             placeholder="send a massage to chatbot"
             size="30"
             onChange={saveInputText}
             value={inputText}
+            className="chat-input"
           />
-          <button onClick={sendMessage}>send</button>
-        </>
+          <button onClick={sendMessage} className="send-button">send</button>
+        </div>
       );
     }
 
     function ChatMessage({ message, sender }) {
       return (
-        <div>
+        <div className={sender === 'user' ? ''}>
           {sender === "robot" && <img src="robot.png" width="50" />}
           {message}
           {sender === "user" && <img src="user.png" width="50" />}
@@ -113,10 +143,10 @@
       // const chatMessages = array[0];
       //const setChatMessages = array[1];   
       return (
-        <>
+        <div className="app-container">
           <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />
           <ChatMessages chatMessages={chatMessages} />
-        </>
+        </div>
       );
     }
 
