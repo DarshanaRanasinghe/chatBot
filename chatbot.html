@@ -150,6 +150,9 @@
     }
 
     function ChatMessages({ chatMessages }) {
+      React.useEffect(() => {
+        console.log('updated');
+      });
       return (
         <div className="chat-message-container">
           {chatMessages.map((chatMessage) => {
